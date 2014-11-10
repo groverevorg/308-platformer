@@ -140,6 +140,7 @@ public class Player extends MapObject {
 	public int getMaxHealth() { return maxHealth; }
 	public int getArrow() { return arrow; }
 	public int getMaxArrow() { return maxArrow; }
+	public boolean isDead(){return dead;}
 	
 	public void setFiring() { 
 		firing = true;
@@ -182,7 +183,7 @@ public class Player extends MapObject {
 				}
 			}
 			
-			// fireballs
+			// arrows
 			for(int j = 0; j < arrows.size(); j++) {
 				if(arrows.get(j).intersects(e)) {
 					e.hit(arrowDamage);
@@ -380,13 +381,16 @@ public class Player extends MapObject {
 			if(left) facingRight = false;
 		}
 		
+		if(y >	230)
+			dead = true;
+		
 	}
 	
 	public void draw(Graphics2D g) {
 		
 		setMapPosition();
 		
-		// draw fireballs
+		// draw arrows
 		for(int i = 0; i < arrows.size(); i++) {
 			arrows.get(i).draw(g);
 		}
@@ -403,6 +407,8 @@ public class Player extends MapObject {
 		super.draw(g);
 		
 	}
+	
+	
 	
 }
 

@@ -82,6 +82,12 @@ public class Level1State extends GameState {
 			GamePanel.HEIGHT / 2 - player.gety()
 		);
 		
+			
+		if(player.isDead()){
+			bgMusic.stop();
+			this.init();
+		}
+		
 		// set background
 		bg.setPosition(tileMap.getx(), tileMap.gety());
 		
