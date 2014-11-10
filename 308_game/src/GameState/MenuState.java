@@ -30,7 +30,7 @@ public class MenuState extends GameState {
 			bg = new Background("/Backgrounds/menubg.gif", 1);
 			bg.setVector(-0.1, 0);
 			
-			titleColor = new Color(128, 0, 0);
+			titleColor = new Color(0, 102, 0);
 			titleFont = new Font(
 					"Century Gothic",
 					Font.PLAIN,
@@ -68,7 +68,7 @@ public class MenuState extends GameState {
 				g.setColor(Color.BLACK);
 			}
 			else {
-				g.setColor(Color.RED);
+				g.setColor(Color.GREEN);
 			}
 			g.drawString(options[i], 145, 140 + i * 15);
 		}
@@ -80,7 +80,7 @@ public class MenuState extends GameState {
 			gsm.setState(GameStateManager.LEVEL1STATE);
 		}
 		if(currentChoice == 1) {
-			// help
+			gsm.setState(GameStateManager.HELPSTATE);
 		}
 		if(currentChoice == 2) {
 			System.exit(0);
