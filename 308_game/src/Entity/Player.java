@@ -14,17 +14,17 @@ public class Player extends MapObject {
 	// player stuff
 	private int health;
 	private int maxHealth;
-	private int fire;
-	private int maxFire;
+	private int arrow;
+	private int maxArrow;
 	private boolean dead;
 	private boolean flinching;
 	private long flinchTimer;
 	
 	// fireball
 	private boolean firing;
-	private int fireCost;
-	private int fireBallDamage;
-	private ArrayList<FireBall> fireBalls;
+	private int arrowCost;
+	private int arrowDamage;
+	private ArrayList<Arrow> arrows;
 	
 	// scratch
 	private boolean scratching;
@@ -46,7 +46,7 @@ public class Player extends MapObject {
 	private static final int JUMPING = 2;
 	private static final int FALLING = 3;
 	private static final int GLIDING = 4;
-	private static final int FIREBALL = 5;
+	private static final int SHOOTARROW = 5;
 	private static final int SCRATCHING = 6;
 	
 	private HashMap<String, AudioPlayer> sfx;
@@ -71,11 +71,11 @@ public class Player extends MapObject {
 		facingRight = true;
 		
 		health = maxHealth = 5;
-		fire = maxFire = 2500;
+		arrow = maxArrow = 2500;
 		
-		fireCost = 200;
-		fireBallDamage = 5;
-		fireBalls = new ArrayList<FireBall>();
+		arrowCost = 200;
+		arrowDamage = 5;
+		arrows = new ArrayList<Arrow>();
 		
 		scratchDamage = 8;
 		scratchRange = 40;
@@ -138,8 +138,8 @@ public class Player extends MapObject {
 	
 	public int getHealth() { return health; }
 	public int getMaxHealth() { return maxHealth; }
-	public int getFire() { return fire; }
-	public int getMaxFire() { return maxFire; }
+	public int getArrow() { return arrow; }
+	public int getMaxArrow() { return maxArrow; }
 	
 	public void setFiring() { 
 		firing = true;
@@ -183,10 +183,10 @@ public class Player extends MapObject {
 			}
 			
 			// fireballs
-			for(int j = 0; j < fireBalls.size(); j++) {
-				if(fireBalls.get(j).intersects(e)) {
-					e.hit(fireBallDamage);
-					fireBalls.get(j).setHit();
+			for(int j = 0; j < arrows.size(); j++) {
+				if(arrows.get(j).intersects(e)) {
+					e.hit(arrowDamage);
+					arrows.get(j).setHit();
 					break;
 				}
 			}
@@ -241,7 +241,7 @@ public class Player extends MapObject {
 		
 		// cannot move while attacking, except in air
 		if(
-		(currentAction == SCRATCHING || currentAction == FIREBALL) &&
+		(currentAction == SCRATCHING || currentAction == SHOOTARROW) &&
 		!(jumping || falling)) {
 			dx = 0;
 		}
@@ -279,27 +279,27 @@ public class Player extends MapObject {
 		if(currentAction == SCRATCHING) {
 			if(animation.hasPlayedOnce()) scratching = false;
 		}
-		if(currentAction == FIREBALL) {
+		if(currentAction == SHOOTARROW) {
 			if(animation.hasPlayedOnce()) firing = false;
 		}
 		
 		// fireball attack
-		fire += 1;
-		if(fire > maxFire) fire = maxFire;
-		if(firing && currentAction != FIREBALL) {
-			if(fire > fireCost) {
-				fire -= fireCost;
-				FireBall fb = new FireBall(tileMap, facingRight);
+		arrow += 1;
+		if(arrow > maxArrow) arrow = maxArrow;
+		if(firing && currentAction != SHOOTARROW) {
+			if(arrow > arrowCost) {
+				arrow -= arrowCost;
+				Arrow fb = new Arrow(tileMap, facingRight);
 				fb.setPosition(x, y);
-				fireBalls.add(fb);
+				arrows.add(fb);
 			}
 		}
 		
 		// update fireballs
-		for(int i = 0; i < fireBalls.size(); i++) {
-			fireBalls.get(i).update();
-			if(fireBalls.get(i).shouldRemove()) {
-				fireBalls.remove(i);
+		for(int i = 0; i < arrows.size(); i++) {
+			arrows.get(i).update();
+			if(arrows.get(i).shouldRemove()) {
+				arrows.remove(i);
 				i--;
 			}
 		}
@@ -324,9 +324,9 @@ public class Player extends MapObject {
 			}
 		}
 		else if(firing) {
-			if(currentAction != FIREBALL) {
-				currentAction = FIREBALL;
-				animation.setFrames(sprites.get(FIREBALL));
+			if(currentAction != SHOOTARROW) {
+				currentAction = SHOOTARROW;
+				animation.setFrames(sprites.get(SHOOTARROW));
 				animation.setDelay(100);
 				width = 30;
 			}
@@ -375,7 +375,7 @@ public class Player extends MapObject {
 		animation.update();
 		
 		// set direction
-		if(currentAction != SCRATCHING && currentAction != FIREBALL) {
+		if(currentAction != SCRATCHING && currentAction != SHOOTARROW) {
 			if(right) facingRight = true;
 			if(left) facingRight = false;
 		}
@@ -387,8 +387,8 @@ public class Player extends MapObject {
 		setMapPosition();
 		
 		// draw fireballs
-		for(int i = 0; i < fireBalls.size(); i++) {
-			fireBalls.get(i).draw(g);
+		for(int i = 0; i < arrows.size(); i++) {
+			arrows.get(i).draw(g);
 		}
 		
 		// draw player

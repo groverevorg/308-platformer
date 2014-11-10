@@ -37,7 +37,7 @@ public class HUD {
 			25
 		);
 		g.drawString(
-			player.getFire() / 100 + "/" + player.getMaxFire() / 100,
+			player.getArrow() / 100 + "/" + player.getMaxArrow() / 100,
 			30,
 			45
 		);
