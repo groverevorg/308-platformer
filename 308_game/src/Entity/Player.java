@@ -73,7 +73,7 @@ public class Player extends MapObject {
 		health = maxHealth = 5;
 		arrow = maxArrow = 2500;
 		
-		arrowCost = 200;
+		arrowCost = 100;
 		arrowDamage = 5;
 		arrows = new ArrayList<Arrow>();
 		
@@ -284,7 +284,7 @@ public class Player extends MapObject {
 			if(animation.hasPlayedOnce()) firing = false;
 		}
 		
-		// fireball attack
+		// arrow attack
 		arrow += 1;
 		if(arrow > maxArrow) arrow = maxArrow;
 		if(firing && currentAction != SHOOTARROW) {
@@ -296,7 +296,7 @@ public class Player extends MapObject {
 			}
 		}
 		
-		// update fireballs
+		// update arrows
 		for(int i = 0; i < arrows.size(); i++) {
 			arrows.get(i).update();
 			if(arrows.get(i).shouldRemove()) {
