@@ -285,8 +285,6 @@ public class Player extends MapObject {
 		}
 		
 		// arrow attack
-		arrow += 1;
-		if(arrow > maxArrow) arrow = maxArrow;
 		if(firing && currentAction != SHOOTARROW) {
 			if(arrow > arrowCost) {
 				arrow -= arrowCost;

@@ -33,7 +33,7 @@ public class Arrow extends MapObject {
 			
 			BufferedImage spritesheet = ImageIO.read(
 				getClass().getResourceAsStream(
-					"/Sprites/Player/fireball.gif"
+					"/Sprites/Player/Arrow.gif"
 				)
 			);
 			

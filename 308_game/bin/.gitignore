@@ -1,5 +1,12 @@
+/Audio/
 /Backgrounds/
-/GameState/
-/Tilesets/
-/Maps/
 /Entity/
+/GameState/
+/HUD/
+/Main/
+/Maps/
+/Music/
+/SFX/
+/Sprites/
+/TileMap/
+/Tilesets/

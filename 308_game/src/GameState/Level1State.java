@@ -154,6 +154,10 @@ public class Level1State extends GameState {
 		if(k == KeyEvent.VK_W) player.setGliding(true);
 		if(k == KeyEvent.VK_R) player.setScratching();
 		if(k == KeyEvent.VK_F) player.setFiring();
+		if(k == KeyEvent.VK_M) {
+			bgMusic.stop();
+			gsm.setState(GameStateManager.MENUSTATE);
+		}
 	}
 	
 	public void keyReleased(int k) {
