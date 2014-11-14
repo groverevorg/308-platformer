@@ -49,7 +49,7 @@ public class Level1State extends GameState {
 		hud = new HUD(player);
 		
 		bgMusic = new AudioPlayer("/Music/theme.mp3");
-		bgMusic.play();
+		bgMusic.loop();
 		
 	}
 	
@@ -81,7 +81,7 @@ public class Level1State extends GameState {
 			GamePanel.WIDTH / 2 - player.getx(),
 			GamePanel.HEIGHT / 2 - player.gety()
 		);
-		
+		if(player.gety() > 225){player.kill();}
 			
 		if(player.isDead()){
 			bgMusic.stop();

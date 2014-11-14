@@ -141,6 +141,7 @@ public class Player extends MapObject {
 	public int getArrow() { return arrow; }
 	public int getMaxArrow() { return maxArrow; }
 	public boolean isDead(){return dead;}
+	public void kill(){dead = true;}
 	
 	public void setFiring() { 
 		firing = true;
@@ -378,9 +379,6 @@ public class Player extends MapObject {
 			if(right) facingRight = true;
 			if(left) facingRight = false;
 		}
-		
-		if(y >	230)
-			dead = true;
 		
 	}
 	

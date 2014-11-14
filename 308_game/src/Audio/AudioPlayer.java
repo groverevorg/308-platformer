@@ -42,7 +42,7 @@ public class AudioPlayer {
 		if(clip == null) return;
 		stop();
 		clip.setFramePosition(0);
-		clip.loop(Clip.LOOP_CONTINUOUSLY);
+		clip.start();
 	}
 	
 	public void stop() {
@@ -54,6 +54,12 @@ public class AudioPlayer {
 		clip.close();
 	}
 	
+	public void loop() {
+		if(clip == null) return;
+		stop();
+		clip.setFramePosition(0);
+		clip.loop(Clip.LOOP_CONTINUOUSLY);
+	}
 }
 
 
