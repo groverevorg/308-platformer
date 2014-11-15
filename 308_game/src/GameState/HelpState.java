@@ -15,12 +15,10 @@ public class HelpState extends GameState {
 	private Player player;
 	
 	private String[] instructions = {
-		"a to move left",
-		"d to move right",
-		"space to jump",
-		"w to glide",
-		"r to attack",
-		"press m to return to menu"
+		"A to move left, D to move right",
+		"SPACE to jump, W to glide",
+		"R to attack, F to fire bow",
+		"press ESC to return to menu"
 	};
 	
 	private Color titleColor;
@@ -41,10 +39,10 @@ public class HelpState extends GameState {
 		tileMap.setPosition(0, 0);
 		tileMap.setTween(1);
 		
-		bg = new Background("/Backgrounds/menubg.gif", 1);
+		bg = new Background("/Backgrounds/grassbg1.gif", 1);
 		bg.setVector(-0.1, 0);
 		
-		titleColor = new Color(0, 102, 0);
+		titleColor = new Color(255, 255, 255);
 		titleFont = new Font(
 				"Century Gothic",
 				Font.PLAIN,
@@ -83,7 +81,7 @@ public class HelpState extends GameState {
 		g.setFont(font);
 		
 		for(int i = 0; i<instructions.length; i++){
-			g.drawString(instructions[i], 45, 100 + i*15);
+			g.drawString(instructions[i], 70, 80 + i*15);
 			
 		}
 		
@@ -104,7 +102,7 @@ public class HelpState extends GameState {
 		if(k == KeyEvent.VK_W) player.setGliding(true);
 		if(k == KeyEvent.VK_R) player.setScratching();
 		if(k == KeyEvent.VK_F) player.setFiring();
-		if(k == KeyEvent.VK_M) gsm.setState(GameStateManager.MENUSTATE);
+		if(k == KeyEvent.VK_ESCAPE) gsm.setState(GameStateManager.MENUSTATE);
 	}
 	
 	public void keyReleased(int k) {
