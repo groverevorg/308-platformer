@@ -71,9 +71,9 @@ public class Player extends MapObject {
 		facingRight = true;
 		
 		health = maxHealth = 20;
-		arrow = maxArrow = 2500;
+		arrow = maxArrow = 25;
 		
-		arrowCost = 100;
+		arrowCost = 1;
 		arrowDamage = 5;
 		arrows = new ArrayList<Arrow>();
 		
@@ -287,7 +287,7 @@ public class Player extends MapObject {
 		
 		// arrow attack
 		if(firing && currentAction != SHOOTARROW) {
-			if(arrow > arrowCost) {
+			if(arrow >= arrowCost) {
 				arrow -= arrowCost;
 				Arrow fb = new Arrow(tileMap, facingRight);
 				fb.setPosition(x, y);

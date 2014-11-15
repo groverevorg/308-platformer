@@ -37,8 +37,8 @@ public class HUD {
 			25
 		);
 
-		g.drawString(player.getArrow() / 100 + "/" 
-				+ player.getMaxArrow() / 100,
+		g.drawString(player.getArrow() + "/" 
+				+ player.getMaxArrow(),
 				30, 45);
 		
 	}
