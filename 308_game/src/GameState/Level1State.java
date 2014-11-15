@@ -70,7 +70,10 @@ public class Level1State extends GameState {
 			s.setPosition(points[i].x, points[i].y);
 			enemies.add(s);
 		}
-		
+		Level1Boss boss;
+		boss = new Level1Boss(tileMap);
+		boss.setPosition(3000, 100);
+		enemies.add(boss);
 	}
 	
 	public void update() {
