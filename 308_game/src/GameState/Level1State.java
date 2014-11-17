@@ -14,6 +14,7 @@ public class Level1State extends GameState {
 	
 	private TileMap tileMap;
 	private Background bg;
+	private int deaths;
 	
 	private Player player;
 	
@@ -26,6 +27,7 @@ public class Level1State extends GameState {
 	
 	public Level1State(GameStateManager gsm) {
 		this.gsm = gsm;
+		
 		init();
 	}
 	
@@ -87,8 +89,16 @@ public class Level1State extends GameState {
 		if(player.gety() > 225){player.kill();}
 			
 		if(player.isDead()){
+			deaths++;
 			bgMusic.stop();
-			this.init();
+			
+			if(player.getLives() > 0)
+			{
+				this.init();
+				player.loseLife(deaths);
+			}
+			else
+				gsm.setState(0);
 		}
 		
 		// set background

@@ -14,6 +14,7 @@ public class Player extends MapObject {
 	// player stuff
 	private int health;
 	private int maxHealth;
+	private int lives;
 	private int arrow;
 	private int maxArrow;
 	private boolean dead;
@@ -71,6 +72,7 @@ public class Player extends MapObject {
 		facingRight = true;
 		
 		health = maxHealth = 20;
+		lives = 3;
 		arrow = maxArrow = 25;
 		
 		arrowCost = 1;
@@ -138,6 +140,8 @@ public class Player extends MapObject {
 	
 	public int getHealth() { return health; }
 	public int getMaxHealth() { return maxHealth; }
+	public int getLives(){return lives;}
+	public void loseLife(int d){lives = lives - d;}
 	public int getArrow() { return arrow; }
 	public int getMaxArrow() { return maxArrow; }
 	public boolean isDead(){return dead;}

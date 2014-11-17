@@ -40,6 +40,7 @@ public class HUD {
 		g.drawString(player.getArrow() + "/" 
 				+ player.getMaxArrow(),
 				30, 45);
+		g.drawString(player.getLives()+"",30,65);
 		
 	}
 	
