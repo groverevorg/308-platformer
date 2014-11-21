@@ -117,6 +117,10 @@ public class Level1State extends GameState {
 				explosions.add(
 					new Explosion(e.getx(), e.gety()));
 			}
+			if(e.isBoss()&& e.isDead()){bgMusic.stop();
+			gsm.setState(GameStateManager.LEVEL2STATE);
+			break;
+			}
 		}
 		
 		// update explosions

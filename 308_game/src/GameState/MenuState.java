@@ -1,5 +1,6 @@
 package GameState;
 
+import Audio.AudioPlayer;
 import TileMap.Background;
 
 import java.awt.*;
@@ -18,7 +19,7 @@ public class MenuState extends GameState {
 	
 	private Color titleColor;
 	private Font titleFont;
-	
+	private AudioPlayer bgMusic;
 	private Font font;
 	
 	public MenuState(GameStateManager gsm) {
@@ -28,7 +29,7 @@ public class MenuState extends GameState {
 		try {
 			
 			bg = new Background("/Backgrounds/menubg2.gif", 1);
-			bg.setVector(0.2, 0);
+			bg.setVector(-0.2, 0);
 			
 			titleColor = new Color(0, 102, 0);
 			titleFont = new Font(
@@ -42,6 +43,9 @@ public class MenuState extends GameState {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		bgMusic = new AudioPlayer("/Music/mind.mp3");
+		bgMusic.loop();
 		
 	}
 	
@@ -85,6 +89,7 @@ public class MenuState extends GameState {
 		if(currentChoice == 2) {
 			System.exit(0);
 		}
+		bgMusic.stop();
 	}
 	
 	public void keyPressed(int k) {

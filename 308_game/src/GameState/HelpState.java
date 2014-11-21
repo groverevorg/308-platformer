@@ -2,6 +2,7 @@ package GameState;
 
 import Main.GamePanel;
 import TileMap.*;
+import Audio.AudioPlayer;
 import Entity.*;
 
 import java.awt.*;
@@ -11,7 +12,7 @@ public class HelpState extends GameState {
 
 	private Background bg;
 	private TileMap tileMap;
-	
+	private AudioPlayer bgMusic;
 	private Player player;
 	
 	private String[] instructions = {
@@ -52,6 +53,8 @@ public class HelpState extends GameState {
 		
 		player = new Player(tileMap);
 		player.setPosition(100, 100);
+		bgMusic = new AudioPlayer("/Music/cooks.mp3");
+		bgMusic.loop();
 	}
 	
 	public void update() {
@@ -102,7 +105,9 @@ public class HelpState extends GameState {
 		if(k == KeyEvent.VK_W) player.setGliding(true);
 		if(k == KeyEvent.VK_R) player.setScratching();
 		if(k == KeyEvent.VK_F) player.setFiring();
-		if(k == KeyEvent.VK_ESCAPE) gsm.setState(GameStateManager.MENUSTATE);
+		if(k == KeyEvent.VK_ESCAPE) {bgMusic.stop();
+		gsm.setState(GameStateManager.MENUSTATE);
+		}
 	}
 	
 	public void keyReleased(int k) {

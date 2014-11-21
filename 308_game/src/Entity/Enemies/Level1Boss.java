@@ -20,6 +20,7 @@ public class Level1Boss extends Enemy {
 		maxSpeed = 0.8;
 		fallSpeed = 0.2;
 		maxFallSpeed = 10.0;
+		boss = true;
 		
 		width = 115;
 		height = 60;
