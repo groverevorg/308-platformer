@@ -21,7 +21,7 @@ public class Player extends MapObject {
 	private boolean flinching;
 	private long flinchTimer;
 	
-	// fireball
+	// arrow
 	private boolean firing;
 	private int arrowCost;
 	private int arrowDamage;
@@ -61,7 +61,7 @@ public class Player extends MapObject {
 		cwidth = 20;
 		cheight = 20;
 		
-		moveSpeed = 0.3;
+		moveSpeed = 0.5; //0.3
 		maxSpeed = 1.6;
 		stopSpeed = 0.4;
 		fallSpeed = 0.15;

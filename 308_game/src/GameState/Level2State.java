@@ -51,7 +51,7 @@ public class Level2State extends GameState {
 		hud = new HUD(player);
 		
 		bgMusic = new AudioPlayer("/Music/theme.mp3");
-		bgMusic.loop();
+		//bgMusic.loop();
 		
 	}
 	
@@ -60,22 +60,16 @@ public class Level2State extends GameState {
 		enemies = new ArrayList<Enemy>();
 		
 		Slugger s;
-		Point[] points = new Point[] {
+		Point[] points = new Point[] 
+		{
 			new Point(200, 100),
-			new Point(860, 200),
-			new Point(1525, 200),
-			new Point(1680, 200),
-			new Point(1800, 200)
+			new Point(150, 300)
 		};
 		for(int i = 0; i < points.length; i++) {
 			s = new Slugger(tileMap);
 			s.setPosition(points[i].x, points[i].y);
 			enemies.add(s);
 		}
-		Level1Boss boss;
-		boss = new Level1Boss(tileMap);
-		boss.setPosition(3000, 100);
-		enemies.add(boss);
 	}
 	
 	public void update() {
@@ -86,7 +80,6 @@ public class Level2State extends GameState {
 			GamePanel.WIDTH / 2 - player.getx(),
 			GamePanel.HEIGHT / 2 - player.gety()
 		);
-		if(player.gety() > 225){player.kill();}
 			
 		if(player.isDead()){
 			deaths++;
