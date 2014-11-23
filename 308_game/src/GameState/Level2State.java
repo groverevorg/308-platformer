@@ -113,8 +113,6 @@ public class Level2State extends GameState {
 			e.update();
 			if(e.isDead()) {
 				enemies.remove(i);
-				if(e.isBoss())
-					gsm.setState(3);
 				i--;
 				explosions.add(
 					new Explosion(e.getx(), e.gety()));
