@@ -39,7 +39,7 @@ public class Level2State extends GameState {
 		tileMap.setPosition(0, 0);
 		tileMap.setTween(1);
 		
-		bg = new Background("/Backgrounds/menubg2.gif", 0.1);
+		bg = new Background("/Backgrounds/menubg2.gif", 0);
 		
 		player = new Player(tileMap);
 		player.setPosition(100, 100);
@@ -113,12 +113,21 @@ public class Level2State extends GameState {
 		}
 		
 		// update explosions
-		for(int i = 0; i < explosions.size(); i++) {
+		for(int i = 0; i < explosions.size(); i++) 
+		{
 			explosions.get(i).update();
-			if(explosions.get(i).shouldRemove()) {
+			if(explosions.get(i).shouldRemove()) 
+			{
 				explosions.remove(i);
 				i--;
 			}
+		}
+		
+		//if player reaches end
+		if(player.getx() >= 125 && player.getx() <= 136 && player.gety() > 2800)
+		{
+			bgMusic.stop();
+			gsm.setState(GameStateManager.MENUSTATE);
 		}
 		
 	}
