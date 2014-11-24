@@ -1,6 +1,6 @@
 package GameState;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class GameStateManager {
 	
@@ -9,9 +9,10 @@ public class GameStateManager {
 	
 	public static final int NUMGAMESTATES = 4;
 	public static final int MENUSTATE = 0;
-	public static final int LEVEL1STATE = 1;
+	public static final int HELPSTATE = 1;
+	public static final int LEVEL1STATE = 2;
 	public static final int LEVEL2STATE = 3;
-	public static final int HELPSTATE = 2;
+
 	
 	public GameStateManager() {
 		
@@ -25,10 +26,10 @@ public class GameStateManager {
 	private void loadState(int state) {
 		if(state == MENUSTATE)
 			gameStates[state] = new MenuState(this);
-		if(state == LEVEL1STATE)
-			gameStates[state] = new Level1State(this);
 		if(state == HELPSTATE)
 			gameStates[state] = new HelpState(this);
+		if(state == LEVEL1STATE)
+			gameStates[state] = new Level1State(this);
 		if(state == LEVEL2STATE)
 			gameStates[state] = new Level2State(this);
 	}

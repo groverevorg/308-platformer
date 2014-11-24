@@ -39,7 +39,7 @@ public class Level2State extends GameState {
 		tileMap.setPosition(0, 0);
 		tileMap.setTween(1);
 		
-		bg = new Background("/Backgrounds/menubg.gif", 0.1);
+		bg = new Background("/Backgrounds/menubg2.gif", 0.1);
 		
 		player = new Player(tileMap);
 		player.setPosition(100, 100);

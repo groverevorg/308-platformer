@@ -80,6 +80,7 @@ public class MenuState extends GameState {
 	}
 	
 	private void select() {
+		bgMusic.stop();
 		if(currentChoice == 0) {
 			gsm.setState(GameStateManager.LEVEL1STATE);
 		}
@@ -89,7 +90,7 @@ public class MenuState extends GameState {
 		if(currentChoice == 2) {
 			System.exit(0);
 		}
-		bgMusic.stop();
+
 	}
 	
 	public void keyPressed(int k) {

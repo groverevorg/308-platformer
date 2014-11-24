@@ -40,8 +40,8 @@ public class HelpState extends GameState {
 		tileMap.setPosition(0, 0);
 		tileMap.setTween(1);
 		
-		bg = new Background("/Backgrounds/grassbg1.gif", 1);
-		bg.setVector(-0.1, 0);
+		bg = new Background("/Backgrounds/grassbg1.gif", 0.1);
+		//bg.setVector(-0.1, 0);
 		
 		titleColor = new Color(255, 255, 255);
 		titleFont = new Font(
