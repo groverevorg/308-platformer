@@ -117,7 +117,9 @@ public class Level1State extends GameState {
 				explosions.add(
 					new Explosion(e.getx(), e.gety()));
 			}
-			if(e.isBoss()&& e.isDead()){bgMusic.stop();
+			//when player reaches magic column
+			if(player.getx() >= 3100 && player.getx() <= 3113 && player.gety() > 175)
+			{bgMusic.stop();
 			gsm.setState(GameStateManager.LEVEL2STATE);
 			break;
 			}

@@ -74,8 +74,7 @@ public class TileMap {
 							tileSize
 						);
 				tiles[1][col] = new Tile(subimage, Tile.BLOCKED);
-			}
-			
+			}			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
