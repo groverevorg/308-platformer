@@ -28,9 +28,9 @@ public class Player extends MapObject {
 	private ArrayList<Arrow> arrows;
 	
 	// scratch
-	private boolean scratching;
-	private int scratchDamage;
-	private int scratchRange;
+	private boolean slashing;
+	private int slashDamage;
+	private int slashRange;
 	
 	// gliding
 	private boolean gliding;
@@ -48,7 +48,7 @@ public class Player extends MapObject {
 	private static final int FALLING = 3;
 	private static final int GLIDING = 4;
 	private static final int SHOOTARROW = 5;
-	private static final int SCRATCHING = 6;
+	private static final int SLASHING = 6;
 	
 	private HashMap<String, AudioPlayer> sfx;
 	
@@ -79,8 +79,8 @@ public class Player extends MapObject {
 		arrowDamage = 5;
 		arrows = new ArrayList<Arrow>();
 		
-		scratchDamage = 8;
-		scratchRange = 40;
+		slashDamage = 8;
+		slashRange = 40;
 		
 		// load sprites
 		try {
@@ -99,7 +99,7 @@ public class Player extends MapObject {
 				
 				for(int j = 0; j < numFrames[i]; j++) {
 					
-					if(i != SCRATCHING) {
+					if(i != SLASHING) {
 						bi[j] = spritesheet.getSubimage(
 								j * width,
 								i * height,
@@ -150,8 +150,8 @@ public class Player extends MapObject {
 	public void setFiring() { 
 		firing = true;
 	}
-	public void setScratching() {
-		scratching = true;
+	public void setSlashing() {
+		slashing = true;
 	}
 	public void setGliding(boolean b) { 
 		gliding = b;
@@ -165,25 +165,25 @@ public class Player extends MapObject {
 			Enemy e = enemies.get(i);
 			
 			// scratch attack
-			if(scratching) {
+			if(slashing) {
 				if(facingRight) {
 					if(
 						e.getx() > x &&
-						e.getx() < x + scratchRange && 
+						e.getx() < x + slashRange && 
 						e.gety() > y - height / 2 &&
 						e.gety() < y + height / 2
 					) {
-						e.hit(scratchDamage);
+						e.hit(slashDamage);
 					}
 				}
 				else {
 					if(
 						e.getx() < x &&
-						e.getx() > x - scratchRange &&
+						e.getx() > x - slashRange &&
 						e.gety() > y - height / 2 &&
 						e.gety() < y + height / 2
 					) {
-						e.hit(scratchDamage);
+						e.hit(slashDamage);
 					}
 				}
 			}
@@ -247,7 +247,7 @@ public class Player extends MapObject {
 		
 		// cannot move while attacking, except in air
 		if(
-		(currentAction == SCRATCHING || currentAction == SHOOTARROW) &&
+		(currentAction == SLASHING || currentAction == SHOOTARROW) &&
 		!(jumping || falling)) {
 			dx = 0;
 		}
@@ -282,8 +282,8 @@ public class Player extends MapObject {
 		setPosition(xtemp, ytemp);
 		
 		// check attack has stopped
-		if(currentAction == SCRATCHING) {
-			if(animation.hasPlayedOnce()) scratching = false;
+		if(currentAction == SLASHING) {
+			if(animation.hasPlayedOnce()) slashing = false;
 		}
 		if(currentAction == SHOOTARROW) {
 			if(animation.hasPlayedOnce()) firing = false;
@@ -318,11 +318,11 @@ public class Player extends MapObject {
 		}
 		
 		// set animation
-		if(scratching) {
-			if(currentAction != SCRATCHING) {
+		if(slashing) {
+			if(currentAction != SLASHING) {
 				sfx.get("scratch").play();
-				currentAction = SCRATCHING;
-				animation.setFrames(sprites.get(SCRATCHING));
+				currentAction = SLASHING;
+				animation.setFrames(sprites.get(SLASHING));
 				animation.setDelay(50);
 				width = 60;
 			}
@@ -379,7 +379,7 @@ public class Player extends MapObject {
 		animation.update();
 		
 		// set direction
-		if(currentAction != SCRATCHING && currentAction != SHOOTARROW) {
+		if(currentAction != SLASHING && currentAction != SHOOTARROW) {
 			if(right) facingRight = true;
 			if(left) facingRight = false;
 		}

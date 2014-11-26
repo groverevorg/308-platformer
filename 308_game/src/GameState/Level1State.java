@@ -22,7 +22,7 @@ public class Level1State extends GameState {
 	private ArrayList<Explosion> explosions;
 	
 	private HUD hud;
-	private BossHUD bhud;
+	//private BossHUD bhud;
 	
 	private AudioPlayer bgMusic;
 	
@@ -78,7 +78,7 @@ public class Level1State extends GameState {
 		boss.setPosition(3000, 100);
 		enemies.add(boss);
 		
-		bhud = new BossHUD(boss);
+		//bhud = new BossHUD(boss);
 	}
 	
 	public void update() {
@@ -180,7 +180,7 @@ public class Level1State extends GameState {
 		
 		if(player.getx() >= 2650
 				&& enemies.get(enemies.size()-1).isBoss()){
-			bhud.draw(g);
+			//bhud.draw(g);
 		}
 	}
 	
@@ -191,7 +191,7 @@ public class Level1State extends GameState {
 		//if(k == KeyEvent.VK_S) player.setDown(true);
 		if(k == KeyEvent.VK_SPACE) player.setJumping(true);
 		if(k == KeyEvent.VK_W) player.setGliding(true);
-		if(k == KeyEvent.VK_R) player.setScratching();
+		if(k == KeyEvent.VK_R) player.setSlashing();
 		if(k == KeyEvent.VK_F) player.setFiring();
 		if(k == KeyEvent.VK_ESCAPE) {
 			bgMusic.stop();
