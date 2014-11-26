@@ -28,7 +28,7 @@ public class Level1Boss extends Enemy {
 		cheight = 35;
 		
 		health = maxHealth = 40;
-		damage = 5;
+		damage = 3;
 		
 		// load sprites
 		try {

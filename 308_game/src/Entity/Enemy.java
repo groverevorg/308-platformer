@@ -19,6 +19,10 @@ public class Enemy extends MapObject {
 	
 	public boolean isDead() { return dead; }
 	
+	public int getHealth() { return health; }
+	
+	public int getMaxHealth() { return maxHealth; }
+	
 	public int getDamage() { return damage; }
 	
 	public boolean isBoss(){return boss;}

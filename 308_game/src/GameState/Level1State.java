@@ -22,6 +22,7 @@ public class Level1State extends GameState {
 	private ArrayList<Explosion> explosions;
 	
 	private HUD hud;
+	private BossHUD bhud;
 	
 	private AudioPlayer bgMusic;
 	
@@ -76,6 +77,8 @@ public class Level1State extends GameState {
 		boss = new Level1Boss(tileMap);
 		boss.setPosition(3000, 100);
 		enemies.add(boss);
+		
+		bhud = new BossHUD(boss);
 	}
 	
 	public void update() {
@@ -107,8 +110,8 @@ public class Level1State extends GameState {
 		// attack enemies
 		player.checkAttack(enemies);
 		
-		// update all enemies
-		for(int i = 0; i < enemies.size(); i++) {
+		// update enemies
+		for(int i = 0; i < enemies.size()-1; i++) {
 			Enemy e = enemies.get(i);
 			e.update();
 			if(e.isDead()) {
@@ -117,12 +120,19 @@ public class Level1State extends GameState {
 				explosions.add(
 					new Explosion(e.getx(), e.gety()));
 			}
-			//when player reaches magic column
-			if(player.getx() >= 3100 && player.getx() <= 3113 && player.gety() > 175)
-			{bgMusic.stop();
-			gsm.setState(GameStateManager.LEVEL2STATE);
-			break;
+		}
+		
+		//update boss
+		if(player.getx() >= 2650){
+			//this would be a good place to change music
+			Enemy b = enemies.get(enemies.size()-1);
+			b.update();
+			if(b.isDead()){
+				enemies.remove(enemies.size()-1);
+				explosions.add(
+					new Explosion(b.getx(), b.gety()));
 			}
+			
 		}
 		
 		// update explosions
@@ -134,6 +144,12 @@ public class Level1State extends GameState {
 			}
 		}
 		
+		//when player reaches magic column
+		if(player.getx() >= 3100 && player.getx() <= 3113 && player.gety() > 175)
+		{
+			bgMusic.stop();
+			gsm.setState(GameStateManager.LEVEL2STATE);
+		}
 	}
 	
 	public void draw(Graphics2D g) {
@@ -162,6 +178,10 @@ public class Level1State extends GameState {
 		// draw hud
 		hud.draw(g);
 		
+		if(player.getx() >= 2650
+				&& enemies.get(enemies.size()-1).isBoss()){
+			bhud.draw(g);
+		}
 	}
 	
 	public void keyPressed(int k) {
