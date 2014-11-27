@@ -51,7 +51,7 @@ public class Level2State extends GameState {
 		hud = new HUD(player);
 		
 		bgMusic = new AudioPlayer("/Music/theme.mp3");
-		//bgMusic.loop();
+		bgMusic.loop();
 		
 	}
 	

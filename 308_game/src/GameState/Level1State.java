@@ -22,7 +22,7 @@ public class Level1State extends GameState {
 	private ArrayList<Explosion> explosions;
 	
 	private HUD hud;
-	//private BossHUD bhud;
+	private BossHUD bhud;
 	
 	private AudioPlayer bgMusic;
 	
@@ -78,7 +78,7 @@ public class Level1State extends GameState {
 		boss.setPosition(3000, 100);
 		enemies.add(boss);
 		
-		//bhud = new BossHUD(boss);
+		bhud = new BossHUD(boss);
 	}
 	
 	public void update() {
@@ -128,9 +128,16 @@ public class Level1State extends GameState {
 			Enemy b = enemies.get(enemies.size()-1);
 			b.update();
 			if(b.isDead()){
+				int x = b.getx();
+				int y = b.gety();
 				enemies.remove(enemies.size()-1);
-				explosions.add(
-					new Explosion(b.getx(), b.gety()));
+				for(int i = 1; i <= 10; i+=3){
+					explosions.add(new Explosion(x+i,y));
+					explosions.add(new Explosion(x+i/2, y+3));
+					explosions.add(new Explosion(x-i, y));
+					explosions.add(new Explosion(x-i/2, y+3));
+					
+				}
 			}
 			
 		}
@@ -180,7 +187,7 @@ public class Level1State extends GameState {
 		
 		if(player.getx() >= 2650
 				&& enemies.get(enemies.size()-1).isBoss()){
-			//bhud.draw(g);
+			bhud.draw(g);
 		}
 	}
 	
