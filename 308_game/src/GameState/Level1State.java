@@ -111,18 +111,28 @@ public class Level1State extends GameState {
 		player.checkAttack(enemies);
 		
 		// update enemies
-		for(int i = 0; i < enemies.size()-1; i++) {
+		for(int i = 0; i < enemies.size(); i++) {
 			Enemy e = enemies.get(i);
-			e.update();
+			if(e.isBoss())
+				e.update(player);
+			else
+				e.update();
 			if(e.isDead()) {
 				enemies.remove(i);
 				i--;
-				explosions.add(
-					new Explosion(e.getx(), e.gety()));
+				if(e.isBoss()){
+					for(int j = 1; j <= 10; j+=3){
+						explosions.add(new Explosion(e.getx()+j,e.gety()));
+						explosions.add(new Explosion(e.getx()+j/2, e.gety()+3));
+						explosions.add(new Explosion(e.getx()-j, e.gety()));
+						explosions.add(new Explosion(e.getx()-j/2, e.gety()+3));
+					}
+				}
+					new Explosion(e.getx(), e.gety());
 			}
 		}
 		
-		//update boss
+		/*update boss
 		if(player.getx() >= 2650){
 			//this would be a good place to change music
 			Enemy b = enemies.get(enemies.size()-1);
@@ -140,7 +150,7 @@ public class Level1State extends GameState {
 				}
 			}
 			
-		}
+		}*/
 		
 		// update explosions
 		for(int i = 0; i < explosions.size(); i++) {

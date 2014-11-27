@@ -16,7 +16,7 @@ public class Level1Boss extends Enemy {
 		
 		super(tm);
 		
-		moveSpeed = 2.0;
+		moveSpeed = 0.5;
 		maxSpeed = 0.8;
 		fallSpeed = 0.2;
 		maxFallSpeed = 10.0;
@@ -86,10 +86,11 @@ public class Level1Boss extends Enemy {
 		
 	}
 	
-	public void update() {
+	public void update(Player p) {
 		
 		// update position
-		getNextPosition();
+		if(p.getx() > 2550)
+			getNextPosition();
 		checkTileMapCollision();
 		setPosition(xtemp, ytemp);
 		
@@ -102,8 +103,18 @@ public class Level1Boss extends Enemy {
 			}
 		}
 		
+		if(left && p.getx() > x){
+			left = false;
+			right = true;
+			facingRight = true;
+		}
+		if(right && p.getx() < x){
+			right = false;
+			left = true;
+			facingRight = false;
+		}
 		// if it hits a wall, go other direction
-		if(right && dx == 0) {
+		else if(right && dx == 0) {
 			right = false;
 			left = true;
 			facingRight = false;

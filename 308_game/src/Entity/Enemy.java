@@ -37,6 +37,7 @@ public class Enemy extends MapObject {
 	}
 	
 	public void update() {}
+	public void update(Player p){}
 	
 }
 
