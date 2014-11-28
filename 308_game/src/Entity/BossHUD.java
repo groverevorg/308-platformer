@@ -12,6 +12,7 @@ public class BossHUD {
 	private BufferedImage image;
 	private Font font;
 	
+	//constructor gets hud image and sets font
 	public BossHUD(Enemy en) {
 		enemy = en;
 		try {
@@ -27,6 +28,7 @@ public class BossHUD {
 		}
 	}
 	
+	//draw the hud
 	public void draw(Graphics2D g) {
 		
 		g.drawImage(image, 240, 10, null);

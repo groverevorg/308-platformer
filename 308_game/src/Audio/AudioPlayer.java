@@ -4,10 +4,12 @@ import javax.sound.sampled.*;
 
 public class AudioPlayer {
 	
+	
 	private Clip clip;
 	
 	public AudioPlayer(String s) {
 		
+		//open file as stream
 		try {
 			
 			AudioInputStream ais =
@@ -16,6 +18,7 @@ public class AudioPlayer {
 						s
 					)
 				);
+			//get file format
 			AudioFormat baseFormat = ais.getFormat();
 			AudioFormat decodeFormat = new AudioFormat(
 				AudioFormat.Encoding.PCM_SIGNED,
@@ -38,6 +41,7 @@ public class AudioPlayer {
 		
 	}
 	
+	//play file from beginning
 	public void play() {
 		if(clip == null) return;
 		stop();
@@ -45,15 +49,18 @@ public class AudioPlayer {
 		clip.start();
 	}
 	
+	//stop playing file
 	public void stop() {
 		if(clip.isRunning()) clip.stop();
 	}
 	
+	//close file
 	public void close() {
 		stop();
 		clip.close();
 	}
 	
+	//play file in a loop starting from beginning
 	public void loop() {
 		if(clip == null) return;
 		stop();

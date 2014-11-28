@@ -68,6 +68,7 @@ public class Arrow extends MapObject {
 		
 	}
 	
+	//set arrow as a hit
 	public void setHit() {
 		if(hit) return;
 		hit = true;
@@ -78,6 +79,7 @@ public class Arrow extends MapObject {
 	
 	public boolean shouldRemove() { return remove; }
 	
+	//update arrow
 	public void update() {
 		
 		checkTileMapCollision();

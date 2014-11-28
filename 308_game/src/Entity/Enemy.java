@@ -3,7 +3,7 @@ package Entity;
 import TileMap.TileMap;
 
 public class Enemy extends MapObject {
-	
+	//variables used by all enemies
 	protected int health;
 	protected int maxHealth;
 	protected boolean dead;
@@ -27,6 +27,7 @@ public class Enemy extends MapObject {
 	
 	public boolean isBoss(){return boss;}
 	
+	//function decrements enemies health when hit
 	public void hit(int damage) {
 		if(dead || flinching) return;
 		health -= damage;

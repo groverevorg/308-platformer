@@ -12,10 +12,12 @@ public class Animation {
 	
 	private boolean playedOnce;
 	
+	//constructor sets playedOnce to false
 	public Animation() {
 		playedOnce = false;
 	}
 	
+	//set frames to beginning start timer
 	public void setFrames(BufferedImage[] frames) {
 		this.frames = frames;
 		currentFrame = 0;
@@ -26,10 +28,12 @@ public class Animation {
 	public void setDelay(long d) { delay = d; }
 	public void setFrame(int i) { currentFrame = i; }
 	
+	
 	public void update() {
 		
 		if(delay == -1) return;
 		
+		//make sure graphics are smooth
 		long elapsed = (System.nanoTime() - startTime) / 1000000;
 		if(elapsed > delay) {
 			currentFrame++;

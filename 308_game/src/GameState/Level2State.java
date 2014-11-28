@@ -27,12 +27,11 @@ public class Level2State extends GameState {
 	
 	public Level2State(GameStateManager gsm) {
 		this.gsm = gsm;
-		
 		init();
 	}
 	
 	public void init() {
-		
+		//prepare the level for play
 		tileMap = new TileMap(30);
 		tileMap.loadTiles("/Tilesets/grasstileset.gif");
 		tileMap.loadMap("/Maps/level1-2.map");
@@ -55,6 +54,7 @@ public class Level2State extends GameState {
 		
 	}
 	
+	//fill level with enemies
 	private void populateEnemies() {
 		
 		enemies = new ArrayList<Enemy>();

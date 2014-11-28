@@ -33,7 +33,7 @@ public class Level1State extends GameState {
 	}
 	
 	public void init() {
-		
+		//prepare level for play
 		tileMap = new TileMap(30);
 		tileMap.loadTiles("/Tilesets/grasstileset.gif");
 		tileMap.loadMap("/Maps/level1-1.map");
@@ -56,8 +56,9 @@ public class Level1State extends GameState {
 		
 	}
 	
+	//fill the level with enemies
 	private void populateEnemies() {
-		
+	
 		enemies = new ArrayList<Enemy>();
 		
 		Slugger s;
@@ -132,25 +133,6 @@ public class Level1State extends GameState {
 			}
 		}
 		
-		/*update boss
-		if(player.getx() >= 2650){
-			//this would be a good place to change music
-			Enemy b = enemies.get(enemies.size()-1);
-			b.update();
-			if(b.isDead()){
-				int x = b.getx();
-				int y = b.gety();
-				enemies.remove(enemies.size()-1);
-				for(int i = 1; i <= 10; i+=3){
-					explosions.add(new Explosion(x+i,y));
-					explosions.add(new Explosion(x+i/2, y+3));
-					explosions.add(new Explosion(x-i, y));
-					explosions.add(new Explosion(x-i/2, y+3));
-					
-				}
-			}
-			
-		}*/
 		
 		// update explosions
 		for(int i = 0; i < explosions.size(); i++) {
