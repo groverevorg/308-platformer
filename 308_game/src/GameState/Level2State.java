@@ -63,12 +63,33 @@ public class Level2State extends GameState {
 		Point[] points = new Point[] 
 		{
 			new Point(200, 100),
-			new Point(150, 300)
+			new Point(150, 300),
+			new Point(200, 650),
+			new Point(200,1000),
+			new Point(200,1300)
 		};
 		for(int i = 0; i < points.length; i++) {
 			s = new Slugger(tileMap);
 			s.setPosition(points[i].x, points[i].y);
 			enemies.add(s);
+		}
+		
+		Bat b;
+		Point[] points2 = new Point[]
+		{
+			new Point(200, 200),
+			new Point(200, 610),
+			new Point(200, 900),
+			new Point(220, 1000),
+			new Point(200, 1500),
+			new Point(200, 1580),
+			new Point(200, 1820),
+			new Point(200, 1900)
+		};
+		for(int i=0; i<points2.length; i++){
+			b=new Bat(tileMap);
+			b.setPosition(points2[i].x,points2[i].y);
+			enemies.add(b);
 		}
 	}
 	

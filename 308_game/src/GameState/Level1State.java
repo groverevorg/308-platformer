@@ -80,6 +80,20 @@ public class Level1State extends GameState {
 		enemies.add(boss);
 		
 		bhud = new BossHUD(boss);
+		
+		Bat bat;
+		Point[] bats = new Point[] {
+			new Point(210, 150),
+			new Point(860, 100),
+			new Point(1525, 150),
+			new Point(1680, 150),
+			new Point(2080, 150)
+		};
+		for(int i =0; i < bats.length; i++){
+			bat = new Bat(tileMap);
+		bat.setPosition(bats[i].x, bats[i].y);
+		enemies.add(bat);
+		}
 	}
 	
 	public void update() {
