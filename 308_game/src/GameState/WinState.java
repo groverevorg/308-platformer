@@ -14,7 +14,7 @@ public class WinState extends GameState {
 	private Color titleColor;
 	private Font titleFont;
 	private AudioPlayer bgMusic;
-	private Font font;
+	
 	
 	public WinState(GameStateManager gsm) {
 		
@@ -30,7 +30,7 @@ public class WinState extends GameState {
 					Font.PLAIN,
 					28);
 			
-			font = new Font("Arial", Font.PLAIN, 12);
+			
 			
 		}
 		catch(Exception e) {

@@ -12,7 +12,6 @@ public class Credits extends GameState {
 	
 	
 	private Color titleColor;
-	private Font titleFont;
 	private AudioPlayer bgMusic;
 	private Font font;
 	
@@ -25,10 +24,6 @@ public class Credits extends GameState {
 			bg = new Background("/Backgrounds/menubg2.gif", 1);
 			bg.setVector(-0.1, 0);
 			titleColor = new Color(0, 255, 0);
-			titleFont = new Font(
-					"Century Gothic",
-					Font.PLAIN,
-					28);
 			
 			font = new Font("Arial", Font.PLAIN, 12);
 			
@@ -58,12 +53,13 @@ public class Credits extends GameState {
 				"Drew Woodwiss - Enemies",
 				"Ian Gaskill - Gameplay",
 				"Kathleen Foley - UI/HUD",
-				"Sean Pador - Level Design","","",
+				"Sean Pador - Level Design","",
 				"Music Credits","","Menu - Pixies - \"Where is my Mind?\"",
 				"Help - Rush Coil - \"Too Many Cooks\"",
 				"Level 1 - Linked Horizon - \"Attack on Titan Theme\"",
 				"Level 2 - Kingdom Hearts - \"Halloween Town\"",
-				"Credits - Street Fighter - \"Guile's Theme\""
+				"Credits - Street Fighter - \"Guile's Theme\"",
+				"Game Over - FFVII - \"Aerith's Theme\""
 			};
 		// draw title
 		g.setColor(titleColor);

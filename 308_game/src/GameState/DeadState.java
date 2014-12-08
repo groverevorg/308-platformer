@@ -43,7 +43,7 @@ public class DeadState extends GameState {
 			e.printStackTrace();
 		}
 		
-		bgMusic = new AudioPlayer("/Music/guile.mp3");
+		bgMusic = new AudioPlayer("/Music/aerith.mp3");
 		bgMusic.loop();
 		
 	}
