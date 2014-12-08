@@ -14,7 +14,8 @@ public class MenuState extends GameState {
 	private String[] options = {
 		"Start",
 		"Help",
-		"Quit"
+		"Quit",
+		"Credits"
 	};
 	
 	private Color titleColor;
@@ -29,9 +30,9 @@ public class MenuState extends GameState {
 		try {
 			
 			bg = new Background("/Backgrounds/menubg2.gif", 1);
-			bg.setVector(-0.2, 0);
+			bg.setVector(-0.1, 0);
 			
-			titleColor = new Color(0, 102, 0);
+			titleColor = new Color(0, 255, 0);
 			titleFont = new Font(
 					"Century Gothic",
 					Font.PLAIN,
@@ -63,7 +64,7 @@ public class MenuState extends GameState {
 		// draw title
 		g.setColor(titleColor);
 		g.setFont(titleFont);
-		g.drawString("Artemis", 100, 70);
+		g.drawString("Artemis", 110, 70);
 		
 		// draw menu options
 		g.setFont(font);
@@ -89,6 +90,9 @@ public class MenuState extends GameState {
 		}
 		if(currentChoice == 2) {
 			System.exit(0);
+		}
+		if(currentChoice == 3) {
+			gsm.setState(GameStateManager.CREDITSTATE);
 		}
 
 	}

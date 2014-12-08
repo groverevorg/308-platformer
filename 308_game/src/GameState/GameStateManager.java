@@ -7,11 +7,14 @@ public class GameStateManager {
 	private GameState[] gameStates;
 	private int currentState;
 	
-	public static final int NUMGAMESTATES = 4;
+	public static final int NUMGAMESTATES = 7;
 	public static final int MENUSTATE = 0;
 	public static final int HELPSTATE = 1;
 	public static final int LEVEL1STATE = 2;
 	public static final int LEVEL2STATE = 3;
+	public static final int CREDITSTATE = 4;
+	public static final int WINSTATE = 5;
+	public static final int DEADSTATE = 6;
 
 	
 	public GameStateManager() {
@@ -32,6 +35,12 @@ public class GameStateManager {
 			gameStates[state] = new Level1State(this);
 		if(state == LEVEL2STATE)
 			gameStates[state] = new Level2State(this);
+		if(state == CREDITSTATE)
+			gameStates[state] = new Credits(this);
+		if(state == WINSTATE)
+			gameStates[state] = new WinState(this);
+		if(state == DEADSTATE)
+			gameStates[state] = new DeadState(this);
 	}
 	
 	private void unloadState(int state) {

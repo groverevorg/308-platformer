@@ -74,12 +74,6 @@ public class Level1State extends GameState {
 			s.setPosition(points[i].x, points[i].y);
 			enemies.add(s);
 		}
-		Level1Boss boss;
-		boss = new Level1Boss(tileMap);
-		boss.setPosition(3000, 100);
-		enemies.add(boss);
-		
-		bhud = new BossHUD(boss);
 		
 		Bat bat;
 		Point[] bats = new Point[] {
@@ -94,6 +88,12 @@ public class Level1State extends GameState {
 		bat.setPosition(bats[i].x, bats[i].y);
 		enemies.add(bat);
 		}
+		
+		Level1Boss boss;
+		boss = new Level1Boss(tileMap);
+		boss.setPosition(3000, 100);
+		enemies.add(boss);
+		bhud = new BossHUD(boss);
 	}
 	
 	public void update() {
@@ -116,7 +116,7 @@ public class Level1State extends GameState {
 				player.loseLife(deaths);
 			}
 			else
-				gsm.setState(0);
+				gsm.setState(6);
 		}
 		
 		// set background
@@ -143,7 +143,7 @@ public class Level1State extends GameState {
 						explosions.add(new Explosion(e.getx()-j/2, e.gety()+3));
 					}
 				}
-					new Explosion(e.getx(), e.gety());
+				explosions.add(new Explosion(e.getx(), e.gety()));
 			}
 		}
 		
@@ -191,7 +191,7 @@ public class Level1State extends GameState {
 		// draw hud
 		hud.draw(g);
 		
-		if(player.getx() >= 2650
+		if(player.getx() >= 2550
 				&& enemies.get(enemies.size()-1).isBoss()){
 			bhud.draw(g);
 		}

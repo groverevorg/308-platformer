@@ -104,8 +104,8 @@ public class Level1Boss extends Enemy {
 		}
 		
 		if(left && p.getx() > x){
-			left = false;
 			right = true;
+			left = false;
 			facingRight = true;
 		}
 		if(right && p.getx() < x){
@@ -114,7 +114,7 @@ public class Level1Boss extends Enemy {
 			facingRight = false;
 		}
 		// if it hits a wall, go other direction
-		else if(right && dx == 0) {
+		/*if(right && dx == 0) {
 			right = false;
 			left = true;
 			facingRight = false;
@@ -123,7 +123,7 @@ public class Level1Boss extends Enemy {
 			right = true;
 			left = false;
 			facingRight = true;
-		}
+		}*/
 		
 		
 		// update animation

@@ -72,7 +72,7 @@ public class Player extends MapObject {
 		facingRight = true;
 		
 		health = maxHealth = 10;
-		lives = 3;
+		lives = 2;
 		arrow = maxArrow = 25;
 		
 		arrowCost = 1;

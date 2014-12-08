@@ -49,7 +49,7 @@ public class Level2State extends GameState {
 		
 		hud = new HUD(player);
 		
-		bgMusic = new AudioPlayer("/Music/theme.mp3");
+		bgMusic = new AudioPlayer("/Music/halloween.mp3");
 		bgMusic.loop();
 		
 	}
@@ -112,7 +112,7 @@ public class Level2State extends GameState {
 				player.loseLife(deaths);
 			}
 			else
-				gsm.setState(0);
+				gsm.setState(6);
 		}
 		
 		// set background
@@ -148,7 +148,7 @@ public class Level2State extends GameState {
 		if(player.getx() >= 125 && player.getx() <= 136 && player.gety() > 2800)
 		{
 			bgMusic.stop();
-			gsm.setState(GameStateManager.MENUSTATE);
+			gsm.setState(GameStateManager.WINSTATE);
 		}
 		
 	}
